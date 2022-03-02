@@ -50,6 +50,48 @@ class LinkedList {
     clear(){
         this.head = null
     }
+
+    removeFirst(){
+        if(!this.head){
+            return;
+        }
+        
+        this.head = this.head.next;
+        
+    }
+
+    removeLast(){
+        if(!this.head){
+            return;
+        }
+
+        if(!this.head.next){
+            this.head = null;
+            return;
+        }
+
+        let prev = this.head;
+        let node = this.head.next;
+        while(node.next){
+            prev = node;
+            node = node.next;
+        }
+        prev.next = null;
+
+    }
+
+    insertLast(data){
+        const last = this.getLast()
+        const node = new Node(data);
+
+        if(last){
+            //There are some existing nodes in our chain
+            last.next = node;
+        }else{
+            // the chain is empty
+            this.head = node;
+        }
+    }
 }
 
 
